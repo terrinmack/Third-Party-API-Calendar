@@ -21,7 +21,44 @@
     //
     // TODO: Add code to display the current date in the header of the page.
 
-// current time in jumbotron
-$('#currentDay').text(moment().format('dddd, MMMM Do YYYY'));
+// current date in jumbotron
 
-  
+var current = moment().format('dddd, MMMM Do YYYY');
+var displayDate = document.querySelector('#currentDay');
+displayDate.innerHTML = current;
+
+// past, present, future color blocking
+
+var currentHour = moment().format(HH);
+
+$('.time-block').each(function() {
+    var timeBlock = parseInt($(this).attr('id'));
+        if (currentHour === timeBlock) {
+            $(this).addClass('present');
+        } else if (currentHour > timeBlock) {
+            $(this).addClass('past');
+        } else if (currentHour < timeBlock) {
+            $(this).addClass('future');
+        }
+});
+
+// local storage retrieving
+// is there a better way of simplifying this?
+$('#9 .time-block').val(localStorage.getItem('9'));
+$('#10 .time-block').val(localStorage.getItem('10'));
+$('#11 .time-block').val(localStorage.getItem('11'));
+$('#12 .time-block').val(localStorage.getItem('12'));
+$('#1 .time-block').val(localStorage.getItem('1'));
+$('#2 .time-block').val(localStorage.getItem('2'));
+$('#3 .time-block').val(localStorage.getItem('3'));
+$('#4 .time-block').val(localStorage.getItem('4'));
+$('#5 .time-block').val(localStorage.getItem('5'));
+
+// save button
+$('.saveBtn').click(function(event) {
+    event.preventDefaul();
+    var time = $(this).parent().attr('id').split('-'[1]);
+    var plan = $(this).siblings('.time-block').val();
+    localStorage.setItem(time, plan);
+    console.log(time)
+});
