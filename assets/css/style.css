@@ -3,9 +3,13 @@ body {
     font-size: 16px;
     line-height: 1;
   }
+
+  .jumbotron {
+    text-align: center;
+  }
   
   textarea {
-    background: transparent;
+    background: lightgrey;
     border: none;
     resize: none;
     color: #000000;
