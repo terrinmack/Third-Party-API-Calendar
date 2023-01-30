@@ -10,19 +10,22 @@ function displayTime() {
 }
 
 // time block color selection
+
 function timeBlockColor() {
     $('.time-block').each(function() {
         var currentHour = parseInt($(this).attr('id'));
         if (currentHour === hour) {
-            $(this).addClass('present');
+            $(this).children('.description').addClass('present');
 
-        } else if (currentHour > hour) {
-            $(this).addClass('future');
-            
+        } else if (currentHour < hour) {
+            $(this).children('.description').addClass('future');
+
         } else {
-            $(this).addClass('past');
+            $(this).children('.description').addClass('past');
         } 
-        console.log(currentHour), console.log(hour)
+        console.log(currentHour), 
+        console.log(hour)
+        console.log(this)
     });
 }
 
