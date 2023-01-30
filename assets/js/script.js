@@ -1,6 +1,7 @@
 // variable from DOM
 var timeDisplay = $('#currentDay');
 var saveBtn = $('.saveBtn');
+var hour = dayjs().format('h');
 
 // display current time in jumbotron
 function displayTime() {
@@ -11,10 +12,20 @@ function displayTime() {
 // time block color selection
 function timeBlockColor() {
     $('.time-block').each(function() {
-       
+        var currentHour = parseInt($(this).attr('id'));
+        if (currentHour === hour) {
+            $(this).addClass('present');
+
+        } else if (currentHour > hour) {
+            $(this).addClass('future');
             
-    })
-};
+        } else {
+            $(this).addClass('past');
+        } 
+        console.log(currentHour), console.log(hour)
+    });
+}
+
 
 // save description entered into localstorage and get from storage
 saveBtn.click(function (event) {
@@ -38,5 +49,5 @@ function printProjectData () {
 // MAKE SURE TO CALL YOUR FUNCTIONS, TERRI :<
 displayTime();
 setInterval(displayTime, 1000);
-timeBlockColor();
 printProjectData();
+timeBlockColor();
