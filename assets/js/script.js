@@ -1,7 +1,7 @@
 // variable from DOM
 var timeDisplay = $('#currentDay');
 var saveBtn = $('.saveBtn');
-var hour = dayjs().format('h');
+var hour = dayjs().format('H');
 
 // display current time in jumbotron
 function displayTime() {
@@ -14,10 +14,10 @@ function displayTime() {
 function timeBlockColor() {
     $('.time-block').each(function() {
         var currentHour = parseInt($(this).attr('id'));
-        if (currentHour === hour) {
+        if (currentHour == hour) {
             $(this).children('.description').addClass('present');
 
-        } else if (currentHour < hour) {
+        } else if (currentHour > hour) {
             $(this).children('.description').addClass('future');
 
         } else {
