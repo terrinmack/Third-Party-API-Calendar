@@ -49,7 +49,7 @@ function printProjectData () {
     });
 }
 
-// MAKE SURE TO CALL YOUR FUNCTIONS, TERRI :<
+// MAKE SURE TO CALL YOUR FUNCTIONS, TERRI :<  -Terri
 displayTime();
 setInterval(displayTime, 1000);
 printProjectData();
